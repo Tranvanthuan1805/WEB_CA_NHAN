@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thuần Lại Lập Trình - Chúc bạn 1 ngày tốt lành</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4F46E5", secondary: "#818CF8" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .typing-animation {
+        overflow: hidden;
+        border-right: 2px solid #4f46e5;
+        white-space: nowrap;
+        margin: 0 auto;
+        animation: typing 3.5s steps(40, end),
+          blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #4f46e5;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 1s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .social-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .course-card:hover {
+        transform: scale(1.02);
+        transition: all 0.3s ease;
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4f46e5, #818cf8);
+        z-index: 1000;
+        width: 0%;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #818cf8;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 custom-scrollbar">
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <span class="text-2xl font-['Pacifico'] text-primary"
+                >Thuan_lai_lap_trinh</span
+              >
+            </div>
+          </div>
+          <div class="hidden md:flex items-center space-x-4">
+            <a
+              href="#home"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Trang chủ</a
+            >
+            <a
+              href="#courses"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Khóa học</a
+            >
+            <a
+              href="#materials"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Tài liệu học</a
+            >
+            <a
+              href="#labs"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Hướng dẫn Lab</a
+            >
+            <a
+              href="#programming"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Lập trình</a
+            >
+            <a
+              href="#contact"
+              class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              >Liên hệ</a
+            >
+            <button
+              class="ml-4 px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+            >
+              Đăng ký / Đăng nhập
+            </button>
+          </div>
+          <div class="flex md:hidden items-center">
+            <button
+              id="mobileMenuButton"
+              class="w-10 h-10 flex items-center justify-center text-gray-500"
+            >
+              <i class="ri-menu-line ri-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Trang chủ</a
+          >
+          <a
+            href="#courses"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Khóa học</a
+          >
+          <a
+            href="#materials"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Tài liệu học</a
+          >
+          <a
+            href="#labs"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Hướng dẫn Lab</a
+          >
+          <a
+            href="#programming"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Lập trình</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100"
+            >Liên hệ</a
+          >
+          <button
+            class="mt-3 w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+          >
+            Đăng ký / Đăng nhập
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="pt-24 pb-16 bg-gradient-to-br from-white to-blue-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+          <div class="w-full md:w-1/3 flex justify-center md:justify-start">
+            <div
+              class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-white"
+            >
+              <img
+                src="https://github.com/Tranvanthuan1805/Image/blob/main/74381b7b-7e0c-4030-a843-80d61ae125ba.jpg?raw=true"
+                alt="Thuần Lại Lập Trình"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+          </div>
+          <div class="w-full md:w-2/3 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              Thuần Lại Lập Trình
+            </h1>
+            <div class="h-8">
+              <p class="text-xl text-gray-600 typing-animation">
+                Chia sẻ kiến thức lập trình
+              </p>
+            </div>
+            <p class="mt-6 text-gray-600 max-w-2xl">
+              Xin chào! Tôi là sinh viên ngành Kỹ thuật Phần mềm (SE) Tôi đam mê
+              chia sẻ kiến thức và hỗ trợ phát triển kỹ năng lập trình từ cơ bản
+              đến nâng cao.
+            </p>
+
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <a
+                href="https://www.youtube.com/@Thuan_lai_lap_trinh"
+                target="_blank"
+                class="social-card flex items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-red-600"
+                >
+                  <i class="ri-youtube-fill ri-lg"></i>
+                </div>
+                <span class="ml-3 text-gray-700">YouTube</span>
+              </a>
+              <a
+                href="https://www.facebook.com/tran.van.thuan.499718"
+                target="_blank"
+                class="social-card flex items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-blue-600"
+                >
+                  <i class="ri-facebook-fill ri-lg"></i>
+                </div>
+                <span class="ml-3 text-gray-700">Facebook</span>
+              </a>
+              <a
+                href="tel:0335111783"
+                class="social-card flex items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-green-600"
+                >
+                  <i class="ri-phone-fill ri-lg"></i>
+                </div>
+                <span class="ml-3 text-gray-700">Zalo</span>
+              </a>
+              <a
+                href="mailto:Tranvanthuan2005tt@gmail.com"
+                class="social-card flex items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
+                <div
+                  class="w-10 h-10 flex items-center justify-center text-red-500"
+                >
+                  <i class="ri-mail-fill ri-lg"></i>
+                </div>
+                <span class="ml-3 text-gray-700">Gmail</span>
+              </a>
+            </div>
+
+            <div class="mt-8">
+              <button
+                class="px-6 py-3 bg-primary text-white rounded-button shadow-lg hover:shadow-xl hover:bg-opacity-90 transition-all whitespace-nowrap"
+              >
+                Tư vấn miễn phí
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">Kỹ năng chuyên môn</h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-code-s-slash-line ri-2x"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Lập trình C/C++</h3>
+            <p class="text-gray-600 text-sm">Từ cơ bản đến nâng cao</p>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-code-box-line ri-2x"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Java OOP</h3>
+            <p class="text-gray-600 text-sm">Lập trình hướng đối tượng</p>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-python-line ri-2x"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Python</h3>
+            <p class="text-gray-600 text-sm">Xử lý dữ liệu & ứng dụng</p>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-html5-line ri-2x"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Web Development</h3>
+            <p class="text-gray-600 text-sm">HTML, CSS, JavaScript</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">Khóa học nổi bật</h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Các khóa học được thiết kế phù hợp với chương trình đào tạo ngành Kỹ
+            thuật Phần mềm, giúp sinh viên nắm vững kiến thức và kỹ năng thực
+            hành.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=programming%20class%20with%20C++%20code%20on%20screen%2C%20students%20learning%20in%20modern%20classroom%2C%20professional%20educational%20setting%2C%20clean%20and%20organized%20environment&width=600&height=400&seq=2&orientation=landscape"
+                alt="Lập trình C/C++"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Lập trình C/C++ từ cơ bản đến nâng cao
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Khóa học giúp bạn nắm vững kiến thức cơ bản và nâng cao về ngôn
+                ngữ lập trình C/C++, áp dụng vào giải quyết các bài toán thực
+                tế.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">24 bài học</span>
+                <button
+                  class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=java%20programming%20class%20with%20object-oriented%20programming%20diagrams%20on%20screen%2C%20students%20engaged%20in%20learning%2C%20modern%20classroom%20environment&width=600&height=400&seq=3&orientation=landscape"
+                alt="Java OOP"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Java OOP & Lập trình hướng đối tượng
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Khóa học giúp bạn hiểu sâu về lập trình hướng đối tượng với
+                Java, xây dựng các ứng dụng thực tế và mini project.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">32 bài học</span>
+                <button
+                  class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="course-card bg-white rounded-lg overflow-hidden shadow-md"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=web%20development%20class%20with%20HTML%2C%20CSS%2C%20and%20JavaScript%20code%20on%20screen%2C%20responsive%20design%20demonstration%2C%20modern%20classroom%20setting&width=600&height=400&seq=4&orientation=landscape"
+                alt="Web Development"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Web Development với HTML, CSS & JS
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Khóa học giúp bạn xây dựng trang web responsive, thiết kế giao
+                diện và xử lý form với JavaScript từ cơ bản đến nâng cao.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">28 bài học</span>
+                <button
+                  class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <button
+            class="px-6 py-3 bg-white border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+          >
+            Xem tất cả khóa học
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">Tài liệu học tập</h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Tổng hợp tài liệu học tập theo từng học kỳ, giúp sinh viên dễ dàng
+            tiếp cận và nắm vững kiến thức.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-primary">
+              Semester 1 & 2
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">SSL101c</h4>
+                <p class="text-sm text-gray-600">Kỹ năng học tập đại học</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PRF192</h4>
+                <p class="text-sm text-gray-600">Lập trình cơ bản với C</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PFP191</h4>
+                <p class="text-sm text-gray-600">Python cơ bản</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">CSI106</h4>
+                <p class="text-sm text-gray-600">Nhập môn CNTT</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PRO192</h4>
+                <p class="text-sm text-gray-600">Java OOP</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">MAD101</h4>
+                <p class="text-sm text-gray-600">Toán rời rạc</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-primary">
+              Semester 3 & 4
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">CSD201</h4>
+                <p class="text-sm text-gray-600">
+                  Cấu trúc dữ liệu và giải thuật
+                </p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">DBI202</h4>
+                <p class="text-sm text-gray-600">Cơ sở dữ liệu</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">JPD113</h4>
+                <p class="text-sm text-gray-600">Tiếng Nhật 1</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">WED301c</h4>
+                <p class="text-sm text-gray-600">Phát triển web</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PRJ301</h4>
+                <p class="text-sm text-gray-600">Java Web Application</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">JPD123</h4>
+                <p class="text-sm text-gray-600">Tiếng Nhật 2</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-primary">
+              Semester 5 & 6
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">SWR302</h4>
+                <p class="text-sm text-gray-600">Yêu cầu phần mềm</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">SWT301</h4>
+                <p class="text-sm text-gray-600">Kiểm thử phần mềm</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PRN212</h4>
+                <p class="text-sm text-gray-600">.NET & C#</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">ITE302c</h4>
+                <p class="text-sm text-gray-600">Đạo đức CNTT</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-primary">
+              Semester 7 & 8
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">SWD392</h4>
+                <p class="text-sm text-gray-600">Thiết kế phần mềm</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">SYB302c</h4>
+                <p class="text-sm text-gray-600">Khởi nghiệp</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PMG201c</h4>
+                <p class="text-sm text-gray-600">Quản lý dự án</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+
+              <div
+                class="bg-white p-4 rounded shadow-sm hover:shadow transition-all"
+              >
+                <h4 class="font-medium mb-2">PRU212</h4>
+                <p class="text-sm text-gray-600">Phát triển game</p>
+                <button class="mt-2 text-primary text-sm flex items-center">
+                  <i class="ri-download-line mr-1"></i> Tải xuống
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programming Guide Section -->
+    <section id="programming" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">
+            Hướng dẫn học lập trình
+          </h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Tổng hợp các bài hướng dẫn lập trình từ cơ bản đến nâng cao, giúp
+            bạn nắm vững kỹ năng và áp dụng vào thực tế.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=C%20programming%20code%20on%20computer%20screen%2C%20showing%20algorithms%20and%20data%20structures%2C%20clean%20code%20example%20with%20syntax%20highlighting&width=600&height=400&seq=5&orientation=landscape"
+                alt="Lập trình C"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Lập trình C từ cơ bản đến nâng cao
+              </h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Cú pháp cơ bản và cấu trúc chương trình</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Mảng, con trỏ và cấu trúc dữ liệu</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Xử lý file và ứng dụng thực tế</span>
+                </li>
+              </ul>
+              <button
+                class="w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+              >
+                Xem hướng dẫn
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=Java%20object-oriented%20programming%20code%20on%20screen%2C%20showing%20class%20diagrams%20and%20inheritance%2C%20professional%20IDE%20with%20dark%20theme&width=600&height=400&seq=6&orientation=landscape"
+                alt="Java OOP"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Java: OOP, xử lý file, mini project
+              </h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Lập trình hướng đối tượng với Java</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Xử lý file và ngoại lệ</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Xây dựng mini project quản lý</span>
+                </li>
+              </ul>
+              <button
+                class="w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+              >
+                Xem hướng dẫn
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=web%20development%20with%20HTML%2C%20CSS%2C%20JavaScript%20code%20on%20screen%2C%20showing%20responsive%20design%20and%20interactive%20elements%2C%20modern%20web%20interface&width=600&height=400&seq=7&orientation=landscape"
+                alt="Web Development"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                HTML, CSS, JavaScript: thiết kế web
+              </h3>
+              <ul class="text-gray-600 space-y-2 mb-4">
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Cấu trúc HTML và CSS cơ bản</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>Responsive design với Flexbox & Grid</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                  <span>JavaScript và xử lý form</span>
+                </li>
+              </ul>
+              <button
+                class="w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+              >
+                Xem hướng dẫn
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-4">
+            Luyện thi PE: mẹo thi, bài mẫu, tổng hợp kiến thức
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 p-4 rounded">
+              <h4 class="font-medium mb-2 flex items-center">
+                <i class="ri-file-list-3-line text-primary mr-2"></i>
+                Mẹo thi PE hiệu quả
+              </h4>
+              <p class="text-sm text-gray-600">
+                Tổng hợp các mẹo làm bài thi PE hiệu quả, giúp bạn đạt điểm cao
+                trong thời gian ngắn.
+              </p>
+              <button class="mt-3 text-primary text-sm flex items-center">
+                <i class="ri-download-line mr-1"></i> Tải xuống
+              </button>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded">
+              <h4 class="font-medium mb-2 flex items-center">
+                <i class="ri-code-box-line text-primary mr-2"></i>
+                Bài mẫu PE các môn
+              </h4>
+              <p class="text-sm text-gray-600">
+                Tổng hợp các bài mẫu PE của các môn PRO192, CSD201, DBI202,
+                PRJ301, v.v.
+              </p>
+              <button class="mt-3 text-primary text-sm flex items-center">
+                <i class="ri-download-line mr-1"></i> Tải xuống
+              </button>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded">
+              <h4 class="font-medium mb-2 flex items-center">
+                <i class="ri-book-open-line text-primary mr-2"></i>
+                Tổng hợp kiến thức
+              </h4>
+              <p class="text-sm text-gray-600">
+                Tổng hợp kiến thức trọng tâm của các môn học, giúp bạn ôn tập
+                hiệu quả trước kỳ thi.
+              </p>
+              <button class="mt-3 text-primary text-sm flex items-center">
+                <i class="ri-download-line mr-1"></i> Tải xuống
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Lab Guide Section -->
+    <section id="labs" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">
+            Hướng dẫn Lab các môn học
+          </h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Tổng hợp hướng dẫn chi tiết các bài lab của các môn học, giúp bạn
+            thực hành và nắm vững kiến thức.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div
+            class="bg-gray-50 rounded-lg p-5 shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-terminal-box-line ri-lg"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">OSG202</h3>
+            <p class="text-gray-600 text-sm mb-3">Hệ điều hành</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 1: Linux Commands</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 2: Shell Scripting</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 3: Process Management</span>
+              </li>
+            </ul>
+            <button
+              class="mt-4 w-full px-3 py-1.5 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-5 shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-database-2-line ri-lg"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">DBI202</h3>
+            <p class="text-gray-600 text-sm mb-3">Cơ sở dữ liệu</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 1: SQL Basics</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 2: Joins & Subqueries</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 3: Stored Procedures</span>
+              </li>
+            </ul>
+            <button
+              class="mt-4 w-full px-3 py-1.5 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-5 shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-code-box-line ri-lg"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">PRO192</h3>
+            <p class="text-gray-600 text-sm mb-3">Lập trình Java OOP</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 1: Class & Objects</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 2: Inheritance</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 3: Polymorphism</span>
+              </li>
+            </ul>
+            <button
+              class="mt-4 w-full px-3 py-1.5 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-lg p-5 shadow-md hover:shadow-lg transition-all"
+          >
+            <div
+              class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-server-line ri-lg"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">NWC204</h3>
+            <p class="text-gray-600 text-sm mb-3">Mạng máy tính</p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 1: Network Basics</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 2: IP Addressing</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-checkbox-circle-line text-primary mt-0.5 mr-1"></i>
+                <span>Lab 3: Routing & Switching</span>
+              </li>
+            </ul>
+            <button
+              class="mt-4 w-full px-3 py-1.5 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap"
+            >
+              Xem chi tiết
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <button
+            class="px-6 py-3 bg-white border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+          >
+            Xem tất cả hướng dẫn Lab
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section
+      class="py-16 bg-gradient-to-br from-primary to-indigo-700 text-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="w-full md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl font-bold mb-4">
+              Đăng ký nhận tư vấn miễn phí
+            </h2>
+            <p class="text-white text-opacity-90 max-w-md">
+              Đăng ký để nhận tư vấn miễn phí về lộ trình học tập, các khóa học
+              phù hợp và tài liệu học tập hữu ích.
+            </p>
+          </div>
+
+          <div class="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Thông tin đăng ký
+            </h3>
+            <form id="registrationForm">
+              <div class="mb-4">
+                <label
+                  for="fullName"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Họ và tên</label
+                >
+                <input
+                  type="text"
+                  id="fullName"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700"
+                  placeholder="Nhập họ và tên của bạn"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="email"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700"
+                  placeholder="Nhập địa chỉ email của bạn"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="phone"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Số điện thoại</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700"
+                  placeholder="Nhập số điện thoại của bạn"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="course"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Khóa học quan tâm</label
+                >
+                <select
+                  id="course"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700 pr-8"
+                >
+                  <option value="">Chọn khóa học</option>
+                  <option value="c-programming">Lập trình C/C++</option>
+                  <option value="java-oop">Java OOP</option>
+                  <option value="web-dev">Web Development</option>
+                  <option value="python">Python</option>
+                  <option value="pe-preparation">Luyện thi PE</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label
+                  for="message"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Lời nhắn</label
+                >
+                <textarea
+                  id="message"
+                  rows="3"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700"
+                  placeholder="Nhập lời nhắn của bạn"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+              >
+                Đăng ký ngay
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">Liên hệ</h2>
+          <div class="mt-2 h-1 w-20 bg-primary mx-auto"></div>
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ
+            với tôi qua các kênh sau.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-phone-line ri-xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Điện thoại / Zalo</h3>
+            <p class="text-gray-600">0335 111 783</p>
+            <p class="text-sm text-gray-500 mt-2">
+              Thời gian: 8:00 - 22:00 (Thứ 2 - Chủ Nhật)
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-mail-line ri-xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Email</h3>
+            <p class="text-gray-600">Tranvanthuan2005tt@gmail.com</p>
+            <p class="text-sm text-gray-500 mt-2">Phản hồi trong vòng 24 giờ</p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary mb-4"
+            >
+              <i class="ri-facebook-line ri-xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Facebook</h3>
+            <p class="text-gray-600">facebook.com/tran.van.thuan.499718</p>
+            <p class="text-sm text-gray-500 mt-2">
+              Nhắn tin trực tiếp trên Facebook
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-gray-50 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4 text-center">Gửi tin nhắn</h3>
+          <form id="contactForm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label
+                  for="contactName"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Họ và tên</label
+                >
+                <input
+                  type="text"
+                  id="contactName"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="contactEmail"
+                  class="block text-gray-700 text-sm font-medium mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="contactEmail"
+                  class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label
+                for="contactSubject"
+                class="block text-gray-700 text-sm font-medium mb-1"
+                >Tiêu đề</label
+              >
+              <input
+                type="text"
+                id="contactSubject"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div class="mb-6">
+              <label
+                for="contactMessage"
+                class="block text-gray-700 text-sm font-medium mb-1"
+                >Nội dung</label
+              >
+              <textarea
+                id="contactMessage"
+                rows="4"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                required
+              ></textarea>
+            </div>
+
+            <div class="text-center">
+              <button
+                type="submit"
+                class="px-6 py-3 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap"
+              >
+                Gửi tin nhắn
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Thuần Lại Lập Trình</h3>
+            <p class="text-gray-400 mb-4">
+              Chia sẻ kiến thức lập trình, hỗ trợ sinh viên ngành Kỹ thuật Phần
+              mềm.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.youtube.com/@Thuan_lai_lap_trinh"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-youtube-fill ri-lg"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/tran.van.thuan.499718"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-facebook-fill ri-lg"></i>
+              </a>
+              <a
+                href="mailto:Tranvanthuan2005tt@gmail.com"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-mail-fill ri-lg"></i>
+              </a>
+              <a
+                href="tel:0335111783"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-phone-fill ri-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Khóa học</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Lập trình C/C++</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Java OOP</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Python</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Web Development</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Luyện thi PE</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Tài liệu</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Semester 1 & 2</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Semester 3 & 4</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Semester 5 & 6</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Semester 7 & 8</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Hướng dẫn Lab</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Liên kết</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#home" class="hover:text-white transition-colors"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <a href="#courses" class="hover:text-white transition-colors"
+                  >Khóa học</a
+                >
+              </li>
+              <li>
+                <a href="#materials" class="hover:text-white transition-colors"
+                  >Tài liệu học</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#programming"
+                  class="hover:text-white transition-colors"
+                  >Lập trình</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-white transition-colors"
+                  >Liên hệ</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm"
+        >
+          <p>&copy; 2025 Thuần Lại Lập Trình. Tất cả quyền được bảo lưu.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script id="navbarToggle">
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      });
+    </script>
+
+    <script id="scrollEffects">
+      document.addEventListener("DOMContentLoaded", function () {
+        const progressBar = document.getElementById("progressBar");
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function () {
+          // Update progress bar
+          const scrollTop =
+            document.documentElement.scrollTop || document.body.scrollTop;
+          const scrollHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrollPercentage = (scrollTop / scrollHeight) * 100;
+          progressBar.style.width = scrollPercentage + "%";
+
+          // Show/hide back to top button
+          if (scrollTop > 300) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.remove("opacity-100", "visible");
+            backToTopButton.classList.add("opacity-0", "invisible");
+          }
+        });
+
+        // Smooth scroll to top
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for navbar height
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+
+    <script id="formHandling">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Registration form handling
+        const registrationForm = document.getElementById("registrationForm");
+        if (registrationForm) {
+          registrationForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+
+            // Simple validation
+            if (!fullName || !email) {
+              alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
+              return;
+            }
+
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = "Đang xử lý...";
+
+            setTimeout(() => {
+              alert(
+                "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể."
+              );
+              this.reset();
+              submitButton.disabled = false;
+              submitButton.innerHTML = "Đăng ký ngay";
+            }, 1500);
+          });
+        }
+
+        // Contact form handling
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("contactName").value;
+            const email = document.getElementById("contactEmail").value;
+            const subject = document.getElementById("contactSubject").value;
+            const message = document.getElementById("contactMessage").value;
+
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+              alert("Vui lòng điền đầy đủ thông tin!");
+              return;
+            }
+
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = "Đang gửi...";
+
+            setTimeout(() => {
+              alert(
+                "Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất có thể."
+              );
+              this.reset();
+              submitButton.disabled = false;
+              submitButton.innerHTML = "Gửi tin nhắn";
+            }, 1500);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
